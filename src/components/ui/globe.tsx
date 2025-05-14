@@ -27,6 +27,8 @@ type Position = {
   endLng: number;
   arcAlt: number;
   color: string;
+  startCountry?: string; // Added for country name
+  endCountry?: string;   // Added for country name
 };
 
 export type GlobeConfig = {
@@ -59,8 +61,6 @@ interface WorldProps {
   globeConfig: GlobeConfig;
   data: Position[];
 }
-
-let numbersOfRings = [0];
 
 export function Globe({ globeConfig, data }: WorldProps) {
   const globeRef = useRef<ThreeGlobe | null>(null);
@@ -123,13 +123,13 @@ export function Globe({ globeConfig, data }: WorldProps) {
     let points = [];
     for (let i = 0; i < arcs.length; i++) {
       const arc = arcs[i];
-      const rgb = hexToRgb(arc.color) as { r: number; g: number; b: number };
       points.push({
         size: defaultProps.pointSize,
         order: arc.order,
         color: arc.color,
         lat: arc.startLat,
         lng: arc.startLng,
+        label: arc.startCountry // Add country name as label
       });
       points.push({
         size: defaultProps.pointSize,
@@ -137,6 +137,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
         color: arc.color,
         lat: arc.endLat,
         lng: arc.endLng,
+        label: arc.endCountry // Add country name as label
       });
     }
 
@@ -157,7 +158,17 @@ export function Globe({ globeConfig, data }: WorldProps) {
       .showAtmosphere(defaultProps.showAtmosphere)
       .atmosphereColor(defaultProps.atmosphereColor)
       .atmosphereAltitude(defaultProps.atmosphereAltitude)
-      .hexPolygonColor(() => defaultProps.polygonColor);
+      .hexPolygonColor(() => defaultProps.polygonColor)
+      .labelsData(filteredPoints)
+      .labelLat(d => (d as any).lat)
+      .labelLng(d => (d as any).lng)
+      .labelText(d => (d as any).label)
+      .labelSize(() => 2)
+      .labelDotRadius(() => 0.3)
+      .labelColor(() => '#000000')
+      .labelResolution(3)
+      .labelAltitude(0.03)
+      .labelsTransitionDuration(0)
 
     globeRef.current
       .arcsData(data)
@@ -167,7 +178,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
       .arcEndLng((d) => (d as { endLng: number }).endLng * 1)
       .arcColor((e: any) => (e as { color: string }).color)
       .arcAltitude((e) => (e as { arcAlt: number }).arcAlt * 1)
-      .arcStroke(() => [0.32, 0.28, 0.3][Math.round(Math.random() * 2)])
+      .arcStroke(() => [0.8, 0.7, 0.9][Math.round(Math.random() * 2)])
       .arcDashLength(defaultProps.arcLength)
       .arcDashInitialGap((e) => (e as { order: number }).order * 1)
       .arcDashGap(15)
@@ -178,7 +189,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
       .pointColor((e) => (e as { color: string }).color)
       .pointsMerge(true)
       .pointAltitude(0.0)
-      .pointRadius(2);
+      .pointRadius(2)
 
     globeRef.current
       .ringsData([])
@@ -273,10 +284,10 @@ export function World(props: WorldProps) {
         enableZoom={false}
         minDistance={cameraZ}
         maxDistance={cameraZ}
-        autoRotateSpeed={1}
-        autoRotate={true}
-        minPolarAngle={Math.PI / 3.5}
-        maxPolarAngle={Math.PI - Math.PI / 3}
+        autoRotateSpeed={globeConfig.autoRotateSpeed ?? 1}
+        autoRotate={globeConfig.autoRotate ?? true}
+        minPolarAngle={Math.PI / 2} // Changed to PI/2 (90 degrees)
+        maxPolarAngle={Math.PI / 2} // Changed to PI/2 (90 degrees)
       />
     </Canvas>
   );
