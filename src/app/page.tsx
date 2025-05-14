@@ -1,4 +1,9 @@
-import { World } from "@/components/ui/globe";
+"use client";
+import dynamic from "next/dynamic";
+
+const World = dynamic(() => import("@/components/ui/globe").then((mod) => mod.World), {
+  ssr: false,
+});
 
 const globeConfig = {
   pointSize: 4,
