@@ -27,8 +27,8 @@ type Position = {
   endLng: number;
   arcAlt: number;
   color: string;
-  startCountry?: string; // Added for country name
-  endCountry?: string;   // Added for country name
+  startCountry?: string;
+  endCountry?: string;
 };
 
 export type GlobeConfig = {
@@ -129,7 +129,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
         color: arc.color,
         lat: arc.startLat,
         lng: arc.startLng,
-        label: arc.startCountry // Add country name as label
+        label: arc.startCountry
       });
       points.push({
         size: defaultProps.pointSize,
@@ -137,7 +137,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
         color: arc.color,
         lat: arc.endLat,
         lng: arc.endLng,
-        label: arc.endCountry // Add country name as label
+        label: arc.endCountry
       });
     }
 
@@ -261,8 +261,15 @@ export function World(props: WorldProps) {
   const { globeConfig } = props;
   const scene = new Scene();
   scene.fog = new Fog(0xffffff, 400, 2000);
+  
+  // Create camera with proper position to view equator
+  const camera = new PerspectiveCamera(50, aspect, 180, 1800);
+  camera.position.set(0, 0, cameraZ); // Position camera directly on Z axis
+  camera.up.set(0, 1, 0); // Set up vector to Y axis
+  camera.lookAt(0, 0, 0); // Look at center
+  
   return (
-    <Canvas scene={scene} camera={new PerspectiveCamera(50, aspect, 180, 1800)}>
+    <Canvas scene={scene} camera={camera}>
       <WebGLRendererConfig />
       <ambientLight color={globeConfig.ambientLight} intensity={0.6} />
       <directionalLight
@@ -286,8 +293,9 @@ export function World(props: WorldProps) {
         maxDistance={cameraZ}
         autoRotateSpeed={globeConfig.autoRotateSpeed ?? 1}
         autoRotate={globeConfig.autoRotate ?? true}
-        minPolarAngle={Math.PI / 2} // Changed to PI/2 (90 degrees)
-        maxPolarAngle={Math.PI / 2} // Changed to PI/2 (90 degrees)
+        minPolarAngle={0} // Allow full rotation
+        maxPolarAngle={Math.PI} // Allow full rotation
+        target={new Vector3(0, 0, 0)} // Set rotation center
       />
     </Canvas>
   );
