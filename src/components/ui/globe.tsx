@@ -163,7 +163,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
       .labelLat(d => (d as any).lat)
       .labelLng(d => (d as any).lng)
       .labelText(d => (d as any).label)
-      .labelSize(() => 2)
+      .labelSize(() => 1.5)
       .labelDotRadius(() => 0.3)
       .labelColor(() => '#000000')
       .labelResolution(3)
@@ -293,8 +293,8 @@ export function World(props: WorldProps) {
         maxDistance={cameraZ}
         autoRotateSpeed={globeConfig.autoRotateSpeed ?? 1}
         autoRotate={globeConfig.autoRotate ?? true}
-        minPolarAngle={0} // Allow full rotation
-        maxPolarAngle={Math.PI} // Allow full rotation
+        minPolarAngle={1.3} // Allow full rotation
+        maxPolarAngle={1.3} // Allow full rotation
         target={new Vector3(0, 0, 0)} // Set rotation center
       />
     </Canvas>

@@ -28,8 +28,8 @@ const colors = ["#FFBE29", "#FFBE29", "#FFBE29"];
 const sampleArcs = [
   {
     order: 1,
-    startLat: 48.8566, // France (Paris)
-    startLng: 2.3522,
+    startLat: 48.75, // France (Paris)
+    startLng: 2.1,
     endLat: 7.8731, // Sri Lanka (Colombo)
     endLng: 80.7718,
     arcAlt: 0.1,
@@ -41,11 +41,22 @@ const sampleArcs = [
     order: 2,
     startLat: 7.8731, // Sri Lanka (Colombo)
     startLng: 80.7718,
-    endLat: -33.8688, // Australia (Sydney)
-    endLng: 151.2093,
+    endLat: -17.4311, // Australia
+    endLng: 130.8073,
     arcAlt: 0.1,
     startCountry: "Sri Lanka",
     endCountry: "Australia",
+    color: colors[Math.floor(Math.random() * colors.length)],
+  },
+  {
+    order: 27,
+    startLat: 7.8731, // Sri Lanka (Colombo)
+    startLng: 80.7718,
+    endLat: 53.7098, // Belarus (Minsk)
+    endLng: 27.9534,
+    arcAlt: 0.1,
+    startCountry: "Sri Lanka",
+    endCountry: "Belarus",
     color: colors[Math.floor(Math.random() * colors.length)],
   },
   {
@@ -63,7 +74,7 @@ const sampleArcs = [
     order: 4,
     startLat: 7.8731, // Sri Lanka (Colombo)
     startLng: 80.7718,
-    endLat: 37.0902, // USA (central coordinate, adjust if needed)
+    endLat: 37.0902, // USA
     endLng: -95.7129,
     arcAlt: 0.3,
     startCountry: "Sri Lanka",
@@ -71,20 +82,42 @@ const sampleArcs = [
     color: colors[Math.floor(Math.random() * colors.length)],
   },
   {
+    order: 31,
+    startLat: 7.8731, // Sri Lanka (Colombo)
+    startLng: 80.7718,
+    endLat: 22.3193, // Hong Kong
+    endLng: 114.1694,
+    arcAlt: 0.1,
+    startCountry: "Sri Lanka",
+    endCountry: "Hong Kong",
+    color: colors[Math.floor(Math.random() * colors.length)],
+  },
+  {
     order: 5,
     startLat: 7.8731, // Sri Lanka (Colombo)
     startLng: 80.7718,
-    endLat: 51.5074, // England (London)
-    endLng: -0.1278,
+    endLat: 53.1900, // England (London)
+    endLng: -2.8900,
     arcAlt: 0.1,
     startCountry: "Sri Lanka",
     endCountry: "England",
     color: colors[Math.floor(Math.random() * colors.length)],
   },
   {
+    order: 30,
+    startLat: -0.7893, // Indonesia
+    startLng: 113.9213,
+    endLat: 7.8731, // Sri Lanka (Colombo)
+    endLng: 80.7718,
+    arcAlt: 0.1,
+    startCountry: "Indonesia",
+    endCountry: "Sri Lanka",
+    color: colors[Math.floor(Math.random() * colors.length)],
+  },
+  {
     order: 6,
-    startLat: -33.8688, // Australia (Sydney)
-    startLng: 151.2093,
+    startLat: -17.4311, // Australia
+    startLng: 130.8073,
     endLat: 7.8731, // Sri Lanka (Colombo)
     endLng: 80.7718,
     arcAlt: 0.1,
@@ -96,11 +129,22 @@ const sampleArcs = [
     order: 7,
     startLat: 7.8731, // Sri Lanka (Colombo)
     startLng: 80.7718,
-    endLat: 48.8566, // France (Paris)
-    endLng: 2.3522,
+    endLat: 48.75, // France (Paris)
+    endLng: 2.1,
     arcAlt: 0.1,
     startCountry: "Sri Lanka",
     endCountry: "France",
+    color: colors[Math.floor(Math.random() * colors.length)],
+  },
+  {
+    order: 27,
+    startLat: 7.8731, // Sri Lanka (Colombo)
+    startLng: 80.7718,
+    endLat: 53.7098, // Belarus (Minsk)
+    endLng: 27.9534,
+    arcAlt: 0.1,
+    startCountry: "Sri Lanka",
+    endCountry: "Belarus",
     color: colors[Math.floor(Math.random() * colors.length)],
   },
   {
@@ -118,7 +162,7 @@ const sampleArcs = [
     order: 9,
     startLat: 7.8731, // Sri Lanka (Colombo)
     startLng: 80.7718,
-    endLat: 37.0902, // USA (central coordinate, adjust if needed)
+    endLat: 37.0902, // USA
     endLng: -95.7129,
     arcAlt: 0.3,
     startCountry: "Sri Lanka",
@@ -126,13 +170,35 @@ const sampleArcs = [
     color: colors[Math.floor(Math.random() * colors.length)],
   },
   {
+    order: 32,
+    startLat: 22.3193, // Hong Kong
+    startLng: 114.1694,
+    endLat: 7.8731, // Sri Lanka (Colombo)
+    endLng: 80.7718,
+    arcAlt: 0.1,
+    startCountry: "Hong Kong",
+    endCountry: "Sri Lanka",
+    color: colors[Math.floor(Math.random() * colors.length)],
+  },
+  {
     order: 10,
-    startLat: 51.5074, // England (London)
-    startLng: -0.1278,
+    startLat: 53.1900, // England (London)
+    startLng: -2.8900,
     endLat: 7.8731, // Sri Lanka (Colombo)
     endLng: 80.7718,
     arcAlt: 0.1,
     startCountry: "England",
+    endCountry: "Sri Lanka",
+    color: colors[Math.floor(Math.random() * colors.length)],
+  },
+  {
+    order: 34,
+    startLat: 52.5, // Netherlands (Amsterdam)
+    startLng: 5.2,
+    endLat: 7.8731, // Sri Lanka (Colombo)
+    endLng: 80.7718,
+    arcAlt: 0.1,
+    startCountry: "Netherlands",
     endCountry: "Sri Lanka",
     color: colors[Math.floor(Math.random() * colors.length)],
   },
@@ -149,12 +215,23 @@ const sampleArcs = [
   },
   {
     order: 12,
-    startLat: 48.8566, // France (Paris)
-    startLng: 2.3522,
+    startLat: 48.75, // France (Paris)
+    startLng: 2.1,
     endLat: 7.8731, // Sri Lanka (Colombo)
     endLng: 80.7718,
     arcAlt: 0.1,
     startCountry: "France",
+    endCountry: "Sri Lanka",
+    color: colors[Math.floor(Math.random() * colors.length)],
+  },
+  {
+    order: 28,
+    startLat: 53.7098, // Belarus (Minsk)
+    startLng: 27.9534,
+    endLat: 7.8731, // Sri Lanka (Colombo)
+    endLng: 80.7718,
+    arcAlt: 0.1,
+    startCountry: "Belarus",
     endCountry: "Sri Lanka",
     color: colors[Math.floor(Math.random() * colors.length)],
   },
@@ -173,18 +250,29 @@ const sampleArcs = [
     order: 14,
     startLat: 7.8731, // Sri Lanka (Colombo)
     startLng: 80.7718,
-    endLat: -33.8688, // Australia (Sydney)
-    endLng: 151.2093,
+    endLat: -17.4311, // Australia
+    endLng: 130.8073,
     arcAlt: 0.1,
     startCountry: "Sri Lanka",
     endCountry: "Australia",
     color: colors[Math.floor(Math.random() * colors.length)],
   },
   {
+    order: 31,
+    startLat: 7.8731, // Sri Lanka (Colombo)
+    startLng: 80.7718,
+    endLat: 22.3193, // Hong Kong
+    endLng: 114.1694,
+    arcAlt: 0.1,
+    startCountry: "Sri Lanka",
+    endCountry: "Hong Kong",
+    color: colors[Math.floor(Math.random() * colors.length)],
+  },
+  {
     order: 15,
     startLat: 7.8731, // Sri Lanka (Colombo)
     startLng: 80.7718,
-    endLat: 37.0902, // USA (central coordinate, adjust if needed)
+    endLat: 37.0902, // USA
     endLng: -95.7129,
     arcAlt: 0.3,
     startCountry: "Sri Lanka",
@@ -203,14 +291,36 @@ const sampleArcs = [
     color: colors[Math.floor(Math.random() * colors.length)],
   },
   {
+    order: 30,
+    startLat: -0.7893, // Indonesia
+    startLng: 113.9213,
+    endLat: 7.8731, // Sri Lanka (Colombo)
+    endLng: 80.7718,
+    arcAlt: 0.1,
+    startCountry: "Indonesia",
+    endCountry: "Sri Lanka",
+    color: colors[Math.floor(Math.random() * colors.length)],
+  },
+  {
     order: 17,
     startLat: 7.8731, // Sri Lanka (Colombo)
     startLng: 80.7718,
-    endLat: 51.5074, // England (London)
-    endLng: -0.1278,
+    endLat: 53.1900, // England (London)
+    endLng: -2.8900,
     arcAlt: 0.1,
     startCountry: "Sri Lanka",
     endCountry: "England",
+    color: colors[Math.floor(Math.random() * colors.length)],
+  },
+  {
+    order: 33,
+    startLat: 7.8731, // Sri Lanka (Colombo)
+    startLng: 80.7718,
+    endLat: 52.5, // Netherlands (Amsterdam)
+    endLng: 5.2,
+    arcAlt: 0.1,
+    startCountry: "Sri Lanka",
+    endCountry: "Netherlands",
     color: colors[Math.floor(Math.random() * colors.length)],
   },
   {
@@ -226,12 +336,23 @@ const sampleArcs = [
   },
   {
     order: 19,
-    startLat: -33.8688, // Australia (Sydney)
-    startLng: 151.2093,
+    startLat: -17.4311, // Australia
+    startLng: 130.8073,
     endLat: 7.8731, // Sri Lanka (Colombo)
     endLng: 80.7718,
     arcAlt: 0.1,
     startCountry: "Australia",
+    endCountry: "Sri Lanka",
+    color: colors[Math.floor(Math.random() * colors.length)],
+  },
+  {
+    order: 32,
+    startLat: 22.3193, // Hong Kong
+    startLng: 114.1694,
+    endLat: 7.8731, // Sri Lanka (Colombo)
+    endLng: 80.7718,
+    arcAlt: 0.1,
+    startCountry: "Hong Kong",
     endCountry: "Sri Lanka",
     color: colors[Math.floor(Math.random() * colors.length)],
   },
@@ -247,21 +368,43 @@ const sampleArcs = [
     color: colors[Math.floor(Math.random() * colors.length)],
   },
   {
+    order: 28,
+    startLat: 53.7098, // Belarus (Minsk)
+    startLng: 27.9534,
+    endLat: 7.8731, // Sri Lanka (Colombo)
+    endLng: 80.7718,
+    arcAlt: 0.1,
+    startCountry: "Belarus",
+    endCountry: "Sri Lanka",
+    color: colors[Math.floor(Math.random() * colors.length)],
+  },
+  {
     order: 21,
     startLat: 7.8731, // Sri Lanka (Colombo)
     startLng: 80.7718,
-    endLat: 48.8566, // France (Paris)
-    endLng: 2.3522,
+    endLat: 48.75, // France (Paris)
+    endLng: 2.1,
     arcAlt: 0.1,
     startCountry: "Sri Lanka", 
     endCountry: "France",
     color: colors[Math.floor(Math.random() * colors.length)],
   },
   {
+    order: 29,
+    startLat: 7.8731, // Sri Lanka (Colombo)
+    startLng: 80.7718,
+    endLat: -0.7893, // Indonesia
+    endLng: 113.9213,
+    arcAlt: 0.1,
+    startCountry: "Sri Lanka",
+    endCountry: "Indonesia",
+    color: colors[Math.floor(Math.random() * colors.length)],
+  },
+  {
     order: 22,
     startLat: 7.8731, // Sri Lanka (Colombo)
     startLng: 80.7718,
-    endLat: 37.0902, // USA (central coordinate, adjust if needed)
+    endLat: 37.0902, // USA
     endLng: -95.7129,
     arcAlt: 0.3,
     startCountry: "Sri Lanka",
@@ -269,9 +412,20 @@ const sampleArcs = [
     color: colors[Math.floor(Math.random() * colors.length)],
   },
   {
+    order: 33,
+    startLat: 7.8731, // Sri Lanka (Colombo)
+    startLng: 80.7718,
+    endLat: 52.5, // Netherlands (Amsterdam)
+    endLng: 5.2,
+    arcAlt: 0.1,
+    startCountry: "Sri Lanka",
+    endCountry: "Netherlands",
+    color: colors[Math.floor(Math.random() * colors.length)],
+  },
+  {
     order: 23,
-    startLat: 51.5074, // England (London)
-    startLng: -0.1278,
+    startLat: 53.1900, // England (London)
+    startLng: -2.8900,
     endLat: 7.8731, // Sri Lanka (Colombo)
     endLng: 80.7718,
     arcAlt: 0.1,
@@ -291,6 +445,17 @@ const sampleArcs = [
     color: colors[Math.floor(Math.random() * colors.length)],
   },
   {
+    order: 34,
+    startLat: 52.5, // Netherlands (Amsterdam)
+    startLng: 5.2,
+    endLat: 7.8731, // Sri Lanka (Colombo)
+    endLng: 80.7718,
+    arcAlt: 0.1,
+    startCountry: "Netherlands",
+    endCountry: "Sri Lanka",
+    color: colors[Math.floor(Math.random() * colors.length)],
+  },
+  {
     order: 25,
     startLat: 7.8731, // Sri Lanka (Colombo)
     startLng: 80.7718,
@@ -299,6 +464,17 @@ const sampleArcs = [
     arcAlt: 0.1,
     startCountry: "Sri Lanka",
     endCountry: "China",
+    color: colors[Math.floor(Math.random() * colors.length)],
+  },
+  {
+    order: 29,
+    startLat: 7.8731, // Sri Lanka (Colombo)
+    startLng: 80.7718,
+    endLat: -0.7893, // Indonesia
+    endLng: 113.9213,
+    arcAlt: 0.1,
+    startCountry: "Sri Lanka",
+    endCountry: "Indonesia",
     color: colors[Math.floor(Math.random() * colors.length)],
   },
   {
